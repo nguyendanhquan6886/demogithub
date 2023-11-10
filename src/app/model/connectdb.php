@@ -2,7 +2,7 @@
 
 function get_connect(){
     try {
-        $conn = new PDO("mysql:host=localhost;dbname=ecommerce_shop;charset=utf8","root","");
+        $conn = new PDO("mysql:host=localhost;dbname=duan1;charset=utf8","root","");
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $conn;
     } catch (\Throwable $th) {

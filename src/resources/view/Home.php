@@ -5,9 +5,9 @@
                 categories
             </a>
             <?php
-            $sql = "SELECT * FROM categories";
+            $sql = "SELECT * FROM cate";
             
-            $categories = pdo_queryall($sql);
+            $categories = query_allcate();
             if (count($categories)) {
                 foreach ($categories as  $category) {
             ?>
@@ -25,9 +25,9 @@
                     categories
                 </a>
                 <?php
-                $sql = "SELECT * FROM categories";
                 
-                $categories = pdo_queryall($sql);
+                
+                $categories = query_allcate();
                 
                     foreach ($categories as  $category) {
                 ?>
@@ -43,21 +43,22 @@
             <?php
             if (isset($_GET['category'])) {
                 $cate_id = $_GET['category'];
-                $sql = "select * from products where cate_id = $cate_id";
                 
-                $products = pdo_queryall($sql);
+                
+                $products = queryallpro("",$cate_id);
                 
                     foreach ($products as  $product) {
+                        extract($product)
             ?>
                         <div class="col-12 col-lg-4 col-md-6 user-select-none animate__animated  animate__zoomIn">
                             <div class="product-image">
-                                <img class="card-img-top rounded-4 " src="<?php echo $product['pd_image']; ?>" alt="Card image cap">
+                                <img class="card-img-top rounded-4 " src="./Admin/product/img/<?php echo $pro_img?>" alt="Card image cap">
                             </div>
                             <div class="card-body">
-                                <a class="card-title two-line-clamp my-3 fs-6 text-dark text-decoration-none " href="index.php?page_layout=productinformation&pd_id=<?php echo $product['pd_id'] ?>"><?php echo $product['pd_name']; ?></a>
+                                <a class="card-title two-line-clamp my-3 fs-6 text-dark text-decoration-none " href="index.php?page_layout=productinformation&pd_id=<?php echo $product['pro_id'] ?>"><?php echo $product['pro_name']; ?></a>
                                 <div class="d-flex align-items-center justify-content-between px-2">
-                                    <p class="card-text fw-bold fs-2 mb-0">$<?php echo $product['pd_price']; ?></p>
-                                    <p class="text-secondary ps-2 mt-3">by <?php echo $product['pd_brand']; ?></p>
+                                    <p class="card-text fw-bold fs-2 mb-0"><?php echo $pro_name ?></p>
+                                    <p class="text-secondary ps-2 mt-3"> <?php echo $pro_price ?></p>
                                 </div>
                             </div>
                         </div>
@@ -67,21 +68,22 @@
                     }
                 }
              else {
-                $sql = "SELECT * FROM products";
                 
-                $products = pdo_queryall($sql);
+                
+                $products = queryallpro("",0);
                 
                     foreach ($products as  $product) {
+                        extract($product);
                     ?>
                         <div class="col-12 col-lg-4 col-md-6 user-select-none">
                             <div class="product-image">
-                                <img class="card-img-top rounded-4 " src="<?php echo $product['pd_image']; ?>" alt="Card image cap">
+                                <img class="card-img-top rounded-4 " src="./Admin/product/img/<?php echo $pro_img?>" alt="Card image cap">
                             </div>
                             <div class="card-body">
-                                <a class="card-title two-line-clamp my-3 fs-6 text-dark text-decoration-none " href="index.php?page_layout=productinformation&pd_id=<?php echo $product['pd_id'] ?>"><?php echo $product['pd_name']; ?></a>
+                                <a class="card-title two-line-clamp my-3 fs-6 text-dark text-decoration-none " href="index.php?page_layout=productinformation&pd_id=<?php echo $product['pro_id'] ?>"><?php echo $product['pro_name']; ?></a>
                                 <div class="d-flex align-items-center justify-content-between px-2">
-                                    <p class="card-text fw-bold fs-2 mb-0">$<?php echo $product['pd_price']; ?></p>
-                                    <p class="text-secondary ps-2 mt-3">by <?php echo $product['pd_brand']; ?></p>
+                                    <p class="card-text fw-bold fs-2 mb-0"><?php echo $pro_name; ?></p>
+                                    <p class="text-secondary ps-2 mt-3"> <?php echo $pro_price ; ?></p>
                                 </div>
                             </div>
                         </div>
