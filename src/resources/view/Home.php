@@ -6,8 +6,8 @@
             </a>
             <?php
             $sql = "SELECT * FROM categories";
-            $stmt = $conn->query($sql);
-            $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+            $categories = pdo_queryall($sql);
             if (count($categories)) {
                 foreach ($categories as  $category) {
             ?>
@@ -26,15 +26,15 @@
                 </a>
                 <?php
                 $sql = "SELECT * FROM categories";
-                $stmt = $conn->query($sql);
-                $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                if (count($categories)) {
+                
+                $categories = pdo_queryall($sql);
+                
                     foreach ($categories as  $category) {
                 ?>
                         <a href="index.php?page_layout=home&category=<?php echo $category['cate_id'] ?>" class="tab-mobile text-capitalize text-dark"><?php echo $category['cate_name']; ?></a>
                 <?php
                     }
-                }
+                
                 ?>
 
             </div>
@@ -43,12 +43,10 @@
             <?php
             if (isset($_GET['category'])) {
                 $cate_id = $_GET['category'];
-                $cate_id = $cate_id === 'all' ? $cate_id : (int)$cate_id;
-                $sql = $cate_id === 'all' ? "SELECT * FROM products" : "SELECT * FROM products WHERE cate_id=$cate_id";
-                $stmt = $conn->prepare($sql);
-                $stmt->execute();
-                $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                if (count($products)) {
+                $sql = "select * from products where cate_id = $cate_id";
+                
+                $products = pdo_queryall($sql);
+                
                     foreach ($products as  $product) {
             ?>
                         <div class="col-12 col-lg-4 col-md-6 user-select-none animate__animated  animate__zoomIn">
@@ -68,11 +66,11 @@
 
                     }
                 }
-            } else {
+             else {
                 $sql = "SELECT * FROM products";
-                $stmt = $conn->query($sql);
-                $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                if (count($products)) {
+                
+                $products = pdo_queryall($sql);
+                
                     foreach ($products as  $product) {
                     ?>
                         <div class="col-12 col-lg-4 col-md-6 user-select-none">
@@ -91,7 +89,7 @@
             <?php
                     }
                 }
-            }
+            
             ?>
         </div>
     </div>

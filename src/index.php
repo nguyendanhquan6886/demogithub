@@ -1,5 +1,6 @@
 <?php
-include('./app/model/connectdb.php');
+include'./app/model/connectdb.php';
+include './app/model/product.php';
 session_start();
 
 ?>
