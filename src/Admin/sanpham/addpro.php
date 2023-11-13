@@ -26,16 +26,20 @@
 
                     </select>
                 </div>
-
+                <div class="mb-3 mt-3">
+                    <label for="giasp" class="form-label text-danger">Brand</label>
+                    <input type="text" class="form-control" id="giasp" placeholder="Brand" name="pro_brand">
+                </div>
 
                 <div class="mb-3 mt-3">
                     <label for="giasp" class="form-label text-danger">Giá sản phẩm:</label>
                     <input type="text" class="form-control" id="giasp" placeholder="Giá sản phẩm" name="pro_price">
                 </div>
                 <div class="mb-3 mt-3">
-                    <label for="giasp" class="form-label text-danger">Ưu đãi sản phẩm:</label>
-                    <input type="text" class="form-control" id="giasp" placeholder="Ưu đãi sản phẩm" name="pro_sale">
+                    <label for="giasp" class="form-label text-danger">Lượt Xem</label>
+                    <input type="text" class="form-control" id="giasp" placeholder="Lượt Xem" name="pro_stock">
                 </div>
+                
 
                 <div class="mb-3 mt-3">
                     <label for="mota" class="text-danger">Mô tả:</label>

@@ -8,7 +8,7 @@
                 <div class="mb-3 mt-3">
                     <label for="tensp" class="form-label text-danger">Tên sản phẩm:</label>
                     <input type="text" class="form-control" id="tensp" placeholder="Tên sản phẩm" name="pro_name" value="<?php echo $pro_one['pro_name']?>">
-                    <input type="text" class="form-control" id="tensp" placeholder="Tên sản phẩm" name="pro_id" value="<?php echo $pro_one['pro_id']?>">
+                    <input type="text" class="form-control" id="tensp" placeholder="Tên sản phẩm" name="pro_id" value="<?php echo $pro_one['pro_id']?>" hidden>
                 </div>
                 <div class="mb-3 mt-3">
                     <label for="danhmuc" class="form-label text-danger">Danh mục sản phẩm:</label>
@@ -33,20 +33,20 @@
 
                     </select>
                 </div>
-
+                <div class="mb-3 mt-3">
+                    <label for="giasp" class="form-label text-danger">Brand</label>
+                    <input type="text" class="form-control" id="giasp" placeholder="Giá sản phẩm" name="pro_brand" value="<?php echo $pro_one['pro_brand']?>" >
+                </div>
 
                 <div class="mb-3 mt-3">
                     <label for="giasp" class="form-label text-danger">Giá sản phẩm:</label>
                     <input type="text" class="form-control" id="giasp" placeholder="Giá sản phẩm" name="pro_price" value="<?php echo $pro_one['pro_price']?>" >
                 </div>
-                <div class="mb-3 mt-3">
-                    <label for="giasp" class="form-label text-danger">Ưu đãi sản phẩm:</label>
-                    <input type="text" class="form-control" id="giasp" placeholder="Ưu đãi sản phẩm" name="pro_sale" value="<?php echo $pro_one['pro_sale']?>">
-                </div>
+                
 
                 <div class="mb-3 mt-3">
                     <label for="mota" class="text-danger">Mô tả:</label>
-                    <textarea class="form-control" rows="3" id="mota" name="pro_mota" value="<?php echo $pro_one['pro_mota']?>"></textarea>
+                    <textarea class="form-control" rows="3" id="mota" name="pro_mota" value=""><?php echo $pro_one['pro_desc']?></textarea>
                 </div>
                 <div class="mb-3 mt-3">
                     <label for="anh" class="form-label text-danger">Ảnh:</label>

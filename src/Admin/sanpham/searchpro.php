@@ -8,11 +8,10 @@
           <form action="indexadmin.php?act=search" method="post">
             <div class="row">
               <div class="col-sm-4">
-                <input class="w-100 p-1" type="text" placeholder="Tìm kiếm theo tên" name="search_name">
+                <input class="w-100 p-1" type="text" placeholder="Tìm kiếm theo tên" name="search">
               </div>
               <div class="col-sm-4">
-                <select class="form-select" name="search_cate">
-                  <option value="0">Tất Cả</option>
+                <select class="form-select">
                   <?php
                     $allcate = query_allcate();
                     foreach($allcate as $cate){
@@ -46,18 +45,14 @@
                 </tr>
               </thead>
               <?php
-             if(isset($_POST['searchprocate'])){
-              $search_name = $_POST['search_name'];
-              $search_cate = $_POST['search_cate'];
-              $result_pro = queryallpro($search_name,$search_cate);
-              if(empty($result_pro)){
-                  echo "Danh Mục Này Chưa Có Sản Phẩm Xin Mời Bạn Thực Hiện Tùy Chọn Khác";
-              }
+              if(isset($_POST['searchprocate'])){
+                $search_name = $_POST['search_name'];
+                $search_cate = $_POST['search_cate'];
+            $result_pro = queryallpro($search_name,$search_cate);
+            if(empty($result_pro)){
+                echo "Danh Mục Này Chưa Có Sản Phẩm Xin Mời Bạn Thực Hiện Tùy Chọn Khác";
             }
             else{
-              $result_pro = queryallpro('',0);
-            }
-              
                 foreach($result_pro as $product){
                   extract($product);
                 $result_cateone = query_onecate($cate_id);
@@ -77,15 +72,14 @@
                   <td>
                     <a href="indexadmin.php?act=suapro&pro_idsua=<?php echo $pro_id?>" class="mb-2"><input class="mb-2" type="button" name="" value="Sửa" id=""></a>
                     <a href="indexadmin.php?act=delpro&pro_idxoa=<?php echo $pro_id?>"><input type="button" name="" value="Xoá" id=""></a>
-                    <a href="indexadmin.php?act=chitietadmin&pro_id=<?php echo $pro_id?>"><input type="button" name="" value="Chi Tiết" id=""></a>
                   </td>
                 </tr>
                 
               </tbody>
               <?php
                 }
-                
-                
+            }
+                }
               ?>
             </table>
           </div>

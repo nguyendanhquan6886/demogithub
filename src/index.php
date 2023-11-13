@@ -1,8 +1,10 @@
 <?php
+session_start();
 include './app/model/connectdb.php';
 include './app/model/product.php';
 include './app/model/cate.php';
-session_start();
+include './app/model/khachhang.php';
+
 
 ?>
 <!DOCTYPE html>
@@ -24,16 +26,34 @@ session_start();
         <div class="content">
             <div class="container">
                 <?php
-                if (isset($_GET['page_layout'])) {
-                    $pageLayout = $_GET['page_layout'];
+                if (isset($_GET['act'])) {
+                    $pageLayout = $_GET['act'];
                     switch ($pageLayout) {
                         case 'home':
                             include('./resources/view/Home.php');
                             break;
+                        case 'productinformation';
+                            include './resources/view/products/ProductInformation.php';
+                            break;
+                        case 'login';
+                            include './resources/view/account/login.php';
+                            break;
+                        case 'register';
+                            include './resources/view/account/register.php';
+                            break;
+
+                        case 'login';
+                            include './resources/view/account/login.php';
+                            break;
+
+                     
+                        case 'logout';
+                            include './resources/view/account/logout.php';
+                            header("Location:index.php");
+                            break;
                     }
                 } else {
                     include('./resources/view/Home.php');
-                    include('./resources/view/Footer.php');
                 }
                 ?>
             </div>
